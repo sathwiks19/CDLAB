@@ -1,4 +1,16 @@
-//Implement Symbol Table Management. 
+/*Implement Symbol Table Management. 
+--------------------------------------------------------------------------------
+AIM: To write a program for implementation of symbol table using c
+Algorithm:
+Step 1: Declare the necessary variables - i, j, x, n, p, add[5], ch, srch, b[15], d[15], and c.
+Step 2: Read the expression from the user terminated by '$' and store it in the character array 'b'.
+Step 3: Calculate the length of the expression and store it in 'n'.
+Step 4: Print the given expression and initialize 'j' to 0.
+Step 5: Traverse through the expression using a loop and for each character in the expression, check if it is an alphabet or an operator
+        using the isalpha() function.If it is an alphabet, allocate memory for it using malloc() and store its address in the 'add' array along with
+        the character in the 'd' array. 
+Step 6: Exit the program.
+---------------------------------------------------------------- */
 #include<stdio.h>
 #include<ctype.h>
 #include<stdlib.h>
@@ -49,7 +61,9 @@ void main()
     x++;
     j++;
    }}}}
-/* OUTPUT:
+/* 
+-------------------------------------------------------------
+OUTPUT:
 Expression terminated by $:A=B+C$
 Given Expression:A=B+C
  Symbol Table
@@ -64,4 +78,4 @@ B        12588928        identifier
  +       12589008        operator
 
 C        12588232        identifier
-*/
+----------------------------------------------------------------*/
