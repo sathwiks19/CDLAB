@@ -1,5 +1,16 @@
-//Construct a Simple Code Generator
-//Back End of the Compiler
+/* Construct a Simple Code Generator
+Back End of the Compiler
+-------------------------------------------------------------------------------------------------
+AIM: Program to construct a simple code generator
+Algorithm:
+Step1: Declare variables: icode (2D array to store intermediate code), str (string to store a line of intermediate code), and opr (string to store operation).
+Step2: Get the set of intermediate code from the user until "exit" is entered, and store each line in the icode array.
+Step3: Iterate through each line of intermediate code in the icode array:
+a. Extract the operation from the third character of the line and store it in the opr variable.
+b. Generate the target code by printing the necessary instructions to the console using the extracted operation and operands.
+Step4: Repeat step 3 for all lines of intermediate code until "exit" is reached.
+Step5: End the program.
+-------------------------------------------------------------------------------------------------- */
 #include<stdio.h>
 #include<string.h>
 
@@ -36,7 +47,8 @@ int main()
     } while (strcmp(icode[++i], "exit") != 0); 
     return 0;
 }
-/* OUTPUT
+/* --------------------------------------------------------
+OUTPUT
 Enter the set of intermediate code (terminated by exit):
 a=b+C
 b=C-d
@@ -54,4 +66,4 @@ Target code generation
         Mov d,R2
         MUL e,R2
         Mov R2,C
-        */
+-----------------------------------------------------------*/
