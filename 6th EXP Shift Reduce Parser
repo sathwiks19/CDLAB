@@ -1,4 +1,4 @@
-//Implement Recursive Descent Parser algorithm 
+
 //Shift Reduce Parser
 #include <stdio.h>
 #include <string.h>
