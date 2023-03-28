@@ -1,0 +1,74 @@
+//Implement Recursive Descent Parser algorithm 
+//Shift Reduce Parser
+#include <stdio.h>
+#include <string.h>
+
+void reduce();
+
+char a[16], stk[15];
+int z, i, j, c;
+
+int main() {
+    printf("GRAMMAR is E->E+E\nE->E*E\nE->(E)\nE->a\n");
+    printf("Enter input string: ");
+    scanf("%s", a);
+    c = strlen(a);
+    a[c] = '$';
+    stk[0] = '$';
+    printf("Stack\tInput\tAction\n");
+    for (i = 1, j = 0; j < c; i++, j++) {
+        if (a[j] == 'a') {
+            stk[i] = a[j];
+            stk[i + 1] = '\0';
+            a[j] = ' ';
+            printf("%s\t%s\tshift a\n", stk, a);
+            reduce();
+        } else {
+            stk[i] = a[j];
+            stk[i + 1] = '\0';
+            a[j] = ' ';
+            printf("%s\t%s\tshift -> %c\n", stk, a, stk[i]);
+            reduce();
+        }
+    }
+    if (a[j] == '$')
+        reduce();
+    if ((stk[1] == 'E') && (stk[2] == '\0'))
+        printf("%s\t%s\tAccept\n", stk, a);
+    else
+        printf("%s\t%s\tError\n", stk, a);
+    return 0;
+}
+
+void reduce() {
+    for (z = 1; z <= c; z++)
+        if (stk[z] == 'a') {
+            stk[z] = 'E';
+            stk[z + 1] = '\0';
+            printf("%s\t%s\tReduce by E->a\n", stk, a);
+        }
+    for (z = 1; z <= c; z++)
+        if (stk[z] == 'E' && stk[z + 1] == '+' && stk[z + 2] == 'E') {
+            stk[z] = 'E';
+            stk[z + 1] = '\0';
+            stk[z + 2] = '\0';
+            printf("%s\t%s\tReduce by E->E+E\n", stk, a);
+            i = i - 2;
+        }
+    for (z = 1; z <= c; z++)
+        if (stk[z] == 'E' && stk[z + 1] == '*' && stk[z + 2] == 'E') {
+            stk[z] = 'E';
+            stk[z + 1] = '\0';
+            stk[z + 2] = '\0';
+            printf("%s\t%s\tReduce by E->E*E\n", stk, a);
+            i = i - 2;
+        }
+    for (z = 1; z <= c; z++)
+        if (stk[z] == '(' && stk[z + 1] == 'E' && stk[z + 2] == ')') {
+            stk[z] = 'E';
+            stk[z + 1] = '\0';
+            stk[z + 2] = '\0';
+            printf("%s\t%s\tReduce by E->(E)\n", stk, a);
+            i = i - 2;
+        }
+}
