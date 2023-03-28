@@ -1,4 +1,21 @@
-//OPERATOR PRECEDENCE PARSING
+/*OPERATOR PRECEDENCE PARSING
+----------------------------------------------------------------------------------------------------------------------------------
+AIM: To create a program for Implementing Operator Precedence Parsing
+Algorithm:
+Step1: Initialize the stack, input string, operator precedence table, terminals, and other variables.
+Step2: Take input for the terminals and operator precedence table.
+Step3: Print the operator precedence table.
+Step4: Initialize the stack with '$' and take input for the input string.
+Step5: Loop through the input string and perform the following actions:
+a. Find the row and column of the top of the stack and the current input symbol in the operator precedence table.
+b. If the top of the stack has a lower precedence than the current input symbol or they have the same precedence, shift the input symbol onto the stack.
+c. If the top of the stack has a higher precedence than the current input symbol, reduce the stack until the top of the stack has a lower or equal precedence than the current input symbol.
+d. If the input string is completely processed, and the top of the stack is '$', the string is accepted.
+e. If the input string is completely processed, and the top of the stack is not '$', the string is not accepted.
+Step6: Print the final stack and input string.
+---------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+
 #include<stdio.h>
 #include<string.h>
 int main()
@@ -90,11 +107,11 @@ printf("\t\t\t");
 }
 return 0;
 }
-/* OUTPUT:
+/* 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+OUTPUT:
 Enter the no.of terminals:3
-
 Enter the terminals:a+$
-
 Enter the table values:
 Enter the value for a a:e
 Enter the value for a +:>
@@ -105,7 +122,7 @@ Enter the value for + $:>
 Enter the value for $ a:<
 Enter the value for $ +:<
 Enter the value for $ $:a
-
+-------------------------------------------------------------------------------
 OPERATOR PRECEDENCE TABLE:
         a       +       $
 
@@ -113,7 +130,7 @@ a       e       >       >
 +       <       >       >
 $       <       <       a
 Enter the input string:a+a$
-
+----------------------------------------------------------------------------------
 STACK                   INPUT STRING                    ACTION
 
 $                       a+a$                    Shift a
@@ -123,4 +140,5 @@ $<+                     a$                      Shift a
 $<+<a                   $                       Reduce
 $<+                     $                       Reduce
 $                       $                       String is accepted
+--------------------------------------------------------------------------------------------------------------------------------------------
 */
