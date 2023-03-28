@@ -1,5 +1,16 @@
 
 //Shift Reduce Parser
+/*   ---------------------------------------------------------------------------------------------------------------------------------------------------
+AIM: The Program to implement shift reduce parser
+Algorithm:
+Step1: Read the input string from the user and initialize the stack with the end marker '$'.
+Step2: For each input symbol in the input string, perform the following steps:
+a. If the input symbol is 'a', shift it onto the stack and print the stack, input and the action performed as "shift a".
+b. If the input symbol is an operator (+ or *), shift it onto the stack and print the stack, input and the action performed as "shift -> <operator>".
+Step3 : Once the entire input string has been processed, check if the last symbol in the input string is '$'. If it is, call the reduce function.
+Step4 : If the stack contains only 'E' and the end marker '$' after reducing all the symbols in the input string, print "Accept". Otherwise, print "Error".
+Step5 : End the program.
+----------------------------------------------------------------------------------------------------------------------------------------------------------- */
 #include <stdio.h>
 #include <string.h>
 
@@ -72,7 +83,8 @@ void reduce() {
             i = i - 2;
         }
 }
-/* OUTPUT:
+/* --------------------------------------------------------------------------------
+OUTPUT:
 GRAMMAR is E->E+E
 E->E*E
 E->(E)
@@ -90,4 +102,4 @@ $E+a         $  shift a
 $E+E         $  Reduce by E->a
 $E           $  Reduce by E->E+E
 $E           $  Accept
-*/
+--------------------------------------------------------------------------------------*/
