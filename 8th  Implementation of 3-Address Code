@@ -1,0 +1,59 @@
+// Implementation of 3-Address Code
+#include <stdio.h>
+#include <string.h>
+
+void pm();
+void plus();
+void div();
+
+int i, j, l, addr = 100;
+char ex[10], expression[10], exp1[10];
+
+int main() {
+    printf("\nEnter the expression with arithmetic operator:");
+    scanf("%s", ex);
+    strcpy(expression, ex);
+    l = strlen(expression);
+    exp1[0] = '\0';
+
+    for (i = 0; i < l; i++) {
+        if (expression[i] == '+' || expression[i] == '-') {
+            if (expression[i + 2] == '/' || expression[i + 2] == '*') {
+                pm();
+                break;
+            } else {
+                plus();
+                break;
+            }
+        } else if (expression[i] == '/' || expression[i] == '*') {
+            div();
+            break;
+        }
+    }
+    return 0;
+}
+
+void pm() {
+    j = l - i - 1;
+    strncpy(exp1, expression, j);
+    exp1[j] = '\0';
+    printf("Three address code:\ntemp=%s\ntemp1=%c%ctemp\n", exp1, expression[j + 1], expression[j]);
+}
+
+void div() {
+    strncpy(exp1, expression, i + 2);
+    exp1[i + 2] = '\0';
+    printf("Three address code:\ntemp=%s\ntemp1=temp%c%c\n", exp1, expression[i + 2], expression[i + 3]);
+}
+
+void plus() {
+    strncpy(exp1, expression, i + 2);
+    exp1[i + 2] = '\0';
+    printf("Three address code:\ntemp=%s\ntemp1=temp%c%c\n", exp1, expression[i + 2], expression[i + 3]);
+}
+
+/* OUTPUT:
+Enter the expression with arithmetic operator:a+b-c
+Three address code:
+temp=a+b
+temp1=temp-c   */
