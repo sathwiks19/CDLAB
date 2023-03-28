@@ -90,7 +90,7 @@ printf("\t\t\t");
 }
 return 0;
 }
-/*
+/* OUTPUT:
 Enter the no.of terminals:3
 
 Enter the terminals:a+$
