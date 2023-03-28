@@ -1,4 +1,15 @@
-// Implementation of 3-Address Code
+/* Implementation of 3-Address Code
+------------------------------------------------------------------------------------
+AIM: The Program to Implement the frontend of the compiler to produce three adress code
+Algorithm;
+Step1: Start the program and declare variables for the indices, length, and memory address of the expression.
+Step2: Take input of the arithmetic expression from the user and store it in a character array called 'ex'.
+Step3: Copy the contents of 'ex' to another character array 'expression' and calculate its length 'l'.
+Step4: Traverse the 'expression' array and identify the arithmetic operator using conditional statements.
+Step5: Depending on the operator, call the corresponding function to generate the three-address code for the given expression. 
+       The 'pm()' function handles addition and subtraction, 'div()' handles multiplication and division, and 'plus()' handles only addition.
+Step6: Print the Code
+-------------------------------------------------------------------------------------- */
 #include <stdio.h>
 #include <string.h>
 
@@ -51,9 +62,10 @@ void plus() {
     exp1[i + 2] = '\0';
     printf("Three address code:\ntemp=%s\ntemp1=temp%c%c\n", exp1, expression[i + 2], expression[i + 3]);
 }
-
-/* OUTPUT:
+/*-------------------------------------------------------------------
+OUTPUT:
 Enter the expression with arithmetic operator:a+b-c
 Three address code:
 temp=a+b
-temp1=temp-c   */
+temp1=temp-c   
+-----------------------------------------------------------------------*/
