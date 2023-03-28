@@ -1,4 +1,6 @@
-//Recursive descent parsing
+/* Recursive descent parsing
+AIM: To implement a Recursive Decent parsing using lex and Yacc Tool  
+*/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
