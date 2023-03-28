@@ -1,5 +1,13 @@
 /* Recursive descent parsing
+-----------------------------------------------------------------------------------------------------------------------------------
 AIM: To implement a Recursive Decent parsing using lex and Yacc Tool  
+Step 1: Initialize global variables i and f to 0 and declare character array str of size 30.
+Step 2: Define all the functions E(), Eprime(), T(), Tprime(), and F() for each non-terminal of the given grammar.
+Step 3: In the main function, read the input string using scanf() function and find its length using strlen() function.
+Step 4: Append a '$' character at the end of the string and call the function E().
+Step 5: Check if the input string has been completely parsed by checking if the next character is '$' and f is still 0. If yes, print "String successfully parsed!", else print "Syntax Error!".
+Step 6: End the program.
+----------------------------------------------------------------------------------------------------------------------------------
 */
 #include <stdio.h>
 #include <string.h>
@@ -79,6 +87,7 @@ int main()
     }
     return 0;}
 /* OUTPUT:
+-----------------------------------
 Enter the string: a+a*a$
 E -> TE'
 T -> FT'
@@ -92,4 +101,5 @@ F -> a
 T' -> ^
 E' -> ^
 String successfully parsed!
+----------------------------------
 */
